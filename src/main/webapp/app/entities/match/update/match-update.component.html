@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-match-heading" data-cy="MatchCreateUpdateHeading" jhiTranslate="tennisApp.match.home.createOrEditLabel">
+        Create or edit a Match
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.playerOneName" for="field_playerOneName">Player One Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="playerOneName"
+            id="field_playerOneName"
+            data-cy="playerOneName"
+            formControlName="playerOneName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.playerOneScore" for="field_playerOneScore">Player One Score</label>
+          <input
+            type="number"
+            class="form-control"
+            name="playerOneScore"
+            id="field_playerOneScore"
+            data-cy="playerOneScore"
+            formControlName="playerOneScore"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.playerTwoName" for="field_playerTwoName">Player Two Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="playerTwoName"
+            id="field_playerTwoName"
+            data-cy="playerTwoName"
+            formControlName="playerTwoName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.playerTwoScore" for="field_playerTwoScore">Player Two Score</label>
+          <input
+            type="number"
+            class="form-control"
+            name="playerTwoScore"
+            id="field_playerTwoScore"
+            data-cy="playerTwoScore"
+            formControlName="playerTwoScore"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.predication" for="field_predication">Predication</label>
+          <input
+            type="text"
+            class="form-control"
+            name="predication"
+            id="field_predication"
+            data-cy="predication"
+            formControlName="predication"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="tennisApp.match.player" for="field_players">Player</label>
+          <select class="form-control" id="field_players" data-cy="player" multiple name="players" formControlName="players">
+            <option
+              [ngValue]="getSelectedPlayer(playerOption, editForm.get('players')!.value)"
+              *ngFor="let playerOption of playersSharedCollection; trackBy: trackPlayerById"
+            >
+              {{ playerOption.lastname }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

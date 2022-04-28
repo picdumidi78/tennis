@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428114813",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "jhi_match",
+  "fields": [
+    {
+      "fieldName": "playerOneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "playerOneScore",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "playerTwoName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "playerTwoScore",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "predication",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Match",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "lastname",
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "match",
+      "ownerSide": true,
+      "relationshipName": "player",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

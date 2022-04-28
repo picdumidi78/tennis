@@ -1,0 +1,103 @@
+<div>
+  <h2 id="page-heading" data-cy="PlayerHeading">
+    <span jhiTranslate="tennisApp.player.home.title">Players</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tennisApp.player.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-player"
+        [routerLink]="['/player/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tennisApp.player.home.createLabel"> Create a new Player </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="players?.length === 0">
+    <span jhiTranslate="tennisApp.player.home.notFound">No players found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="players && players.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="firstname">
+            <span jhiTranslate="tennisApp.player.firstname">Firstname</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastname">
+            <span jhiTranslate="tennisApp.player.lastname">Lastname</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="country">
+            <span jhiTranslate="tennisApp.player.country">Country</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="age"><span jhiTranslate="tennisApp.player.age">Age</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="firstServePercentage">
+            <span jhiTranslate="tennisApp.player.firstServePercentage">First Serve Percentage</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="servicePointsWon">
+            <span jhiTranslate="tennisApp.player.servicePointsWon">Service Points Won</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="breakPointsSaved">
+            <span jhiTranslate="tennisApp.player.breakPointsSaved">Break Points Saved</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="secondServeReturnPointsWon">
+            <span jhiTranslate="tennisApp.player.secondServeReturnPointsWon">Second Serve Return Points Won</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="breakPointsConverted">
+            <span jhiTranslate="tennisApp.player.breakPointsConverted">Break Points Converted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="score"><span jhiTranslate="tennisApp.player.score">Score</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let player of players; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/player', player.id, 'view']">{{ player.id }}</a>
+          </td>
+          <td>{{ player.firstname }}</td>
+          <td>{{ player.lastname }}</td>
+          <td>{{ player.country }}</td>
+          <td>{{ player.age }}</td>
+          <td>{{ player.firstServePercentage }}</td>
+          <td>{{ player.servicePointsWon }}</td>
+          <td>{{ player.breakPointsSaved }}</td>
+          <td>{{ player.secondServeReturnPointsWon }}</td>
+          <td>{{ player.breakPointsConverted }}</td>
+          <td>{{ player.score }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/player', player.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/player', player.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(player)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

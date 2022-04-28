@@ -1,0 +1,34 @@
+entity Player {
+    firstname String,
+    lastname String,
+    country String,
+    age Integer,
+    firstServePercentage Double,
+    servicePointsWon Double,
+    breakPointsSaved Double,
+    secondServeReturnPointsWon Double,
+    breakPointsConverted Double,
+    score Double
+}
+
+entity Match {
+    playerOneName String,
+    playerOneScore Double,
+    playerTwoName String,
+    playerTwoScore Double,
+    predication String
+}
+
+relationship ManyToMany {
+	
+    Match{player(lastname)} to Player{match(id)}
+    
+}
+
+// Set pagination options
+paginate Player, Match with infinite-scroll
+
+
+service all with serviceImpl
+
+

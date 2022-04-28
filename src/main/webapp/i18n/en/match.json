@@ -1,0 +1,29 @@
+{
+  "tennisApp": {
+    "match": {
+      "home": {
+        "title": "Matches",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Match",
+        "createOrEditLabel": "Create or edit a Match",
+        "notFound": "No Matches found"
+      },
+      "created": "A new Match is created with identifier {{ param }}",
+      "updated": "A Match is updated with identifier {{ param }}",
+      "deleted": "A Match is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Match {{ id }}?"
+      },
+      "detail": {
+        "title": "Match"
+      },
+      "id": "ID",
+      "playerOneName": "Player One Name",
+      "playerOneScore": "Player One Score",
+      "playerTwoName": "Player Two Name",
+      "playerTwoScore": "Player Two Score",
+      "predication": "Predication",
+      "player": "Player"
+    }
+  }
+}
