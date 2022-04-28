@@ -20,10 +20,15 @@
       "id": "ID",
       "playerOneName": "Player One Name",
       "playerOneScore": "Player One Score",
+      "playerOneOdd": "Player One Odd",
       "playerTwoName": "Player Two Name",
       "playerTwoScore": "Player Two Score",
-      "predication": "Predication",
-      "player": "Player"
+      "playerTwoOdd": "Player Two Odd",
+      "prediction": "Prediction",
+      "actualResult": "Actual Result",
+      "betAmount": "Bet Amount",
+      "potentialGain": "Potential Gain",
+      "gain": "Gain"
     }
   }
 }

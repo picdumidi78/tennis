@@ -51,14 +51,32 @@ public class MatchServiceImpl implements MatchService {
                 if (match.getPlayerOneScore() != null) {
                     existingMatch.setPlayerOneScore(match.getPlayerOneScore());
                 }
+                if (match.getPlayerOneOdd() != null) {
+                    existingMatch.setPlayerOneOdd(match.getPlayerOneOdd());
+                }
                 if (match.getPlayerTwoName() != null) {
                     existingMatch.setPlayerTwoName(match.getPlayerTwoName());
                 }
                 if (match.getPlayerTwoScore() != null) {
                     existingMatch.setPlayerTwoScore(match.getPlayerTwoScore());
                 }
-                if (match.getPredication() != null) {
-                    existingMatch.setPredication(match.getPredication());
+                if (match.getPlayerTwoOdd() != null) {
+                    existingMatch.setPlayerTwoOdd(match.getPlayerTwoOdd());
+                }
+                if (match.getPrediction() != null) {
+                    existingMatch.setPrediction(match.getPrediction());
+                }
+                if (match.getActualResult() != null) {
+                    existingMatch.setActualResult(match.getActualResult());
+                }
+                if (match.getBetAmount() != null) {
+                    existingMatch.setBetAmount(match.getBetAmount());
+                }
+                if (match.getPotentialGain() != null) {
+                    existingMatch.setPotentialGain(match.getPotentialGain());
+                }
+                if (match.getGain() != null) {
+                    existingMatch.setGain(match.getGain());
                 }
 
                 return existingMatch;
@@ -73,15 +91,11 @@ public class MatchServiceImpl implements MatchService {
         return matchRepository.findAll(pageable);
     }
 
-    public Page<Match> findAllWithEagerRelationships(Pageable pageable) {
-        return matchRepository.findAllWithEagerRelationships(pageable);
-    }
-
     @Override
     @Transactional(readOnly = true)
     public Optional<Match> findOne(Long id) {
         log.debug("Request to get Match : {}", id);
-        return matchRepository.findOneWithEagerRelationships(id);
+        return matchRepository.findById(id);
     }
 
     @Override

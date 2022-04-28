@@ -14,6 +14,10 @@
       "fieldType": "Double"
     },
     {
+      "fieldName": "playerOneOdd",
+      "fieldType": "Double"
+    },
+    {
       "fieldName": "playerTwoName",
       "fieldType": "String"
     },
@@ -22,8 +26,30 @@
       "fieldType": "Double"
     },
     {
-      "fieldName": "predication",
-      "fieldType": "String"
+      "fieldName": "playerTwoOdd",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "prediction",
+      "fieldType": "Resultat",
+      "fieldValues": "PLAYERONE (Tennis player 1 wins),PLAYERTWO (Tennis player 2 wins),ONESETONE (1 set at least for player 1),ONESETWO (1 set at least for player 2),GAMELOWONE (At least 17.5 games),GAMELOWTWO (At least 18.5 games),GAMEHIGHONE (Less than 17.5 games),GAMEHIGHTWO (Less than 18.5 games)"
+    },
+    {
+      "fieldName": "actualResult",
+      "fieldType": "Resultat",
+      "fieldValues": "PLAYERONE (Tennis player 1 wins),PLAYERTWO (Tennis player 2 wins),ONESETONE (1 set at least for player 1),ONESETWO (1 set at least for player 2),GAMELOWONE (At least 17.5 games),GAMELOWTWO (At least 18.5 games),GAMEHIGHONE (Less than 17.5 games),GAMEHIGHTWO (Less than 18.5 games)"
+    },
+    {
+      "fieldName": "betAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "potentialGain",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "gain",
+      "fieldType": "Double"
     }
   ],
   "fluentMethods": true,
@@ -31,15 +57,6 @@
   "name": "Match",
   "pagination": "infinite-scroll",
   "readOnly": false,
-  "relationships": [
-    {
-      "otherEntityField": "lastname",
-      "otherEntityName": "player",
-      "otherEntityRelationshipName": "match",
-      "ownerSide": true,
-      "relationshipName": "player",
-      "relationshipType": "many-to-many"
-    }
-  ],
+  "relationships": [],
   "service": "serviceImpl"
 }

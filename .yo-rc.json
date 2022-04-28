@@ -19,7 +19,7 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": ["Player", "Match"],
+    "entities": ["Player", "Match", "Bet"],
     "entitySuffix": "",
     "gitCompany": "",
     "jhiPrefix": "jhi",

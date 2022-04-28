@@ -51,15 +51,6 @@
   "name": "Player",
   "pagination": "infinite-scroll",
   "readOnly": false,
-  "relationships": [
-    {
-      "otherEntityField": "id",
-      "otherEntityName": "match",
-      "otherEntityRelationshipName": "player",
-      "ownerSide": false,
-      "relationshipName": "match",
-      "relationshipType": "many-to-many"
-    }
-  ],
+  "relationships": [],
   "service": "serviceImpl"
 }

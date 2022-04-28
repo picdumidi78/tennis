@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { Resultat } from 'app/entities/enumerations/resultat.model';
 import { IMatch, Match } from '../match.model';
 
 import { MatchService } from './match.service';
@@ -23,9 +24,15 @@ describe('Match Service', () => {
       id: 0,
       playerOneName: 'AAAAAAA',
       playerOneScore: 0,
+      playerOneOdd: 0,
       playerTwoName: 'AAAAAAA',
       playerTwoScore: 0,
-      predication: 'AAAAAAA',
+      playerTwoOdd: 0,
+      prediction: Resultat.PLAYERONE,
+      actualResult: Resultat.PLAYERONE,
+      betAmount: 0,
+      potentialGain: 0,
+      gain: 0,
     };
   });
 
@@ -63,9 +70,15 @@ describe('Match Service', () => {
           id: 1,
           playerOneName: 'BBBBBB',
           playerOneScore: 1,
+          playerOneOdd: 1,
           playerTwoName: 'BBBBBB',
           playerTwoScore: 1,
-          predication: 'BBBBBB',
+          playerTwoOdd: 1,
+          prediction: 'BBBBBB',
+          actualResult: 'BBBBBB',
+          betAmount: 1,
+          potentialGain: 1,
+          gain: 1,
         },
         elemDefault
       );
@@ -83,9 +96,12 @@ describe('Match Service', () => {
       const patchObject = Object.assign(
         {
           playerOneScore: 1,
+          playerOneOdd: 1,
           playerTwoName: 'BBBBBB',
           playerTwoScore: 1,
-          predication: 'BBBBBB',
+          playerTwoOdd: 1,
+          prediction: 'BBBBBB',
+          actualResult: 'BBBBBB',
         },
         new Match()
       );
@@ -107,9 +123,15 @@ describe('Match Service', () => {
           id: 1,
           playerOneName: 'BBBBBB',
           playerOneScore: 1,
+          playerOneOdd: 1,
           playerTwoName: 'BBBBBB',
           playerTwoScore: 1,
-          predication: 'BBBBBB',
+          playerTwoOdd: 1,
+          prediction: 'BBBBBB',
+          actualResult: 'BBBBBB',
+          betAmount: 1,
+          potentialGain: 1,
+          gain: 1,
         },
         elemDefault
       );
@@ -161,7 +183,7 @@ describe('Match Service', () => {
       });
 
       it('should add only unique Match to an array', () => {
-        const matchArray: IMatch[] = [{ id: 123 }, { id: 456 }, { id: 75305 }];
+        const matchArray: IMatch[] = [{ id: 123 }, { id: 456 }, { id: 45678 }];
         const matchCollection: IMatch[] = [{ id: 123 }];
         expectedResult = service.addMatchToCollectionIfMissing(matchCollection, ...matchArray);
         expect(expectedResult).toHaveLength(3);

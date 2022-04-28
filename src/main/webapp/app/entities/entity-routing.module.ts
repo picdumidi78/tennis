@@ -14,6 +14,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'tennisApp.match.home.title' },
         loadChildren: () => import('./match/match.module').then(m => m.MatchModule),
       },
+      {
+        path: 'bet',
+        data: { pageTitle: 'tennisApp.bet.home.title' },
+        loadChildren: () => import('./bet/bet.module').then(m => m.BetModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

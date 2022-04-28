@@ -38,6 +38,18 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.playerOneOdd" for="field_playerOneOdd">Player One Odd</label>
+          <input
+            type="number"
+            class="form-control"
+            name="playerOneOdd"
+            id="field_playerOneOdd"
+            data-cy="playerOneOdd"
+            formControlName="playerOneOdd"
+          />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="tennisApp.match.playerTwoName" for="field_playerTwoName">Player Two Name</label>
           <input
             type="text"
@@ -62,27 +74,53 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="tennisApp.match.predication" for="field_predication">Predication</label>
+          <label class="form-label" jhiTranslate="tennisApp.match.playerTwoOdd" for="field_playerTwoOdd">Player Two Odd</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
-            name="predication"
-            id="field_predication"
-            data-cy="predication"
-            formControlName="predication"
+            name="playerTwoOdd"
+            id="field_playerTwoOdd"
+            data-cy="playerTwoOdd"
+            formControlName="playerTwoOdd"
           />
         </div>
 
         <div class="row mb-3">
-          <label jhiTranslate="tennisApp.match.player" for="field_players">Player</label>
-          <select class="form-control" id="field_players" data-cy="player" multiple name="players" formControlName="players">
-            <option
-              [ngValue]="getSelectedPlayer(playerOption, editForm.get('players')!.value)"
-              *ngFor="let playerOption of playersSharedCollection; trackBy: trackPlayerById"
-            >
-              {{ playerOption.lastname }}
-            </option>
+          <label class="form-label" jhiTranslate="tennisApp.match.prediction" for="field_prediction">Prediction</label>
+          <select class="form-control" name="prediction" formControlName="prediction" id="field_prediction" data-cy="prediction">
+            <option [ngValue]="null">{{ 'tennisApp.Resultat.null' | translate }}</option>
+            <option *ngFor="let resultat of resultatValues" [value]="resultat">{{ 'tennisApp.Resultat.' + resultat | translate }}</option>
           </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.actualResult" for="field_actualResult">Actual Result</label>
+          <select class="form-control" name="actualResult" formControlName="actualResult" id="field_actualResult" data-cy="actualResult">
+            <option [ngValue]="null">{{ 'tennisApp.Resultat.null' | translate }}</option>
+            <option *ngFor="let resultat of resultatValues" [value]="resultat">{{ 'tennisApp.Resultat.' + resultat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.betAmount" for="field_betAmount">Bet Amount</label>
+          <input type="number" class="form-control" name="betAmount" id="field_betAmount" data-cy="betAmount" formControlName="betAmount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.potentialGain" for="field_potentialGain">Potential Gain</label>
+          <input
+            type="number"
+            class="form-control"
+            name="potentialGain"
+            id="field_potentialGain"
+            data-cy="potentialGain"
+            formControlName="potentialGain"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.gain" for="field_gain">Gain</label>
+          <input type="number" class="form-control" name="gain" id="field_gain" data-cy="gain" formControlName="gain" />
         </div>
       </div>
 

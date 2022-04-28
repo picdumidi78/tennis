@@ -3,12 +3,11 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import { IMatch, Match } from '../match.model';
 import { MatchService } from '../service/match.service';
-import { IPlayer } from 'app/entities/player/player.model';
-import { PlayerService } from 'app/entities/player/service/player.service';
+import { Resultat } from 'app/entities/enumerations/resultat.model';
 
 @Component({
   selector: 'jhi-match-update',
@@ -16,31 +15,28 @@ import { PlayerService } from 'app/entities/player/service/player.service';
 })
 export class MatchUpdateComponent implements OnInit {
   isSaving = false;
-
-  playersSharedCollection: IPlayer[] = [];
+  resultatValues = Object.keys(Resultat);
 
   editForm = this.fb.group({
     id: [],
     playerOneName: [],
     playerOneScore: [],
+    playerOneOdd: [],
     playerTwoName: [],
     playerTwoScore: [],
-    predication: [],
-    players: [],
+    playerTwoOdd: [],
+    prediction: [],
+    actualResult: [],
+    betAmount: [],
+    potentialGain: [],
+    gain: [],
   });
 
-  constructor(
-    protected matchService: MatchService,
-    protected playerService: PlayerService,
-    protected activatedRoute: ActivatedRoute,
-    protected fb: FormBuilder
-  ) {}
+  constructor(protected matchService: MatchService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ match }) => {
       this.updateForm(match);
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -56,21 +52,6 @@ export class MatchUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.matchService.create(match));
     }
-  }
-
-  trackPlayerById(_index: number, item: IPlayer): number {
-    return item.id!;
-  }
-
-  getSelectedPlayer(option: IPlayer, selectedVals?: IPlayer[]): IPlayer {
-    if (selectedVals) {
-      for (const selectedVal of selectedVals) {
-        if (option.id === selectedVal.id) {
-          return selectedVal;
-        }
-      }
-    }
-    return option;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IMatch>>): void {
@@ -97,28 +78,16 @@ export class MatchUpdateComponent implements OnInit {
       id: match.id,
       playerOneName: match.playerOneName,
       playerOneScore: match.playerOneScore,
+      playerOneOdd: match.playerOneOdd,
       playerTwoName: match.playerTwoName,
       playerTwoScore: match.playerTwoScore,
-      predication: match.predication,
-      players: match.players,
+      playerTwoOdd: match.playerTwoOdd,
+      prediction: match.prediction,
+      actualResult: match.actualResult,
+      betAmount: match.betAmount,
+      potentialGain: match.potentialGain,
+      gain: match.gain,
     });
-
-    this.playersSharedCollection = this.playerService.addPlayerToCollectionIfMissing(
-      this.playersSharedCollection,
-      ...(match.players ?? [])
-    );
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.playerService
-      .query()
-      .pipe(map((res: HttpResponse<IPlayer[]>) => res.body ?? []))
-      .pipe(
-        map((players: IPlayer[]) =>
-          this.playerService.addPlayerToCollectionIfMissing(players, ...(this.editForm.get('players')!.value ?? []))
-        )
-      )
-      .subscribe((players: IPlayer[]) => (this.playersSharedCollection = players));
   }
 
   protected createFromForm(): IMatch {
@@ -127,10 +96,15 @@ export class MatchUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       playerOneName: this.editForm.get(['playerOneName'])!.value,
       playerOneScore: this.editForm.get(['playerOneScore'])!.value,
+      playerOneOdd: this.editForm.get(['playerOneOdd'])!.value,
       playerTwoName: this.editForm.get(['playerTwoName'])!.value,
       playerTwoScore: this.editForm.get(['playerTwoScore'])!.value,
-      predication: this.editForm.get(['predication'])!.value,
-      players: this.editForm.get(['players'])!.value,
+      playerTwoOdd: this.editForm.get(['playerTwoOdd'])!.value,
+      prediction: this.editForm.get(['prediction'])!.value,
+      actualResult: this.editForm.get(['actualResult'])!.value,
+      betAmount: this.editForm.get(['betAmount'])!.value,
+      potentialGain: this.editForm.get(['potentialGain'])!.value,
+      gain: this.editForm.get(['gain'])!.value,
     };
   }
 }

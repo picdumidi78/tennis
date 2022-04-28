@@ -20,31 +20,35 @@
             <column name="player_one_score" type="double">
                 <constraints nullable="true" />
             </column>
+            <column name="player_one_odd" type="double">
+                <constraints nullable="true" />
+            </column>
             <column name="player_two_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="player_two_score" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="predication" type="varchar(255)">
+            <column name="player_two_odd" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="prediction" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="actual_result" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="bet_amount" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="potential_gain" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="gain" type="double">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-    </changeSet>
-
-    <changeSet id="20220428114813-1-relations" author="jhipster">
-
-        <createTable tableName="rel_jhi_match__player">
-            <column name="player_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="jhi_match_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="jhi_match_id, player_id" tableName="rel_jhi_match__player"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -66,9 +70,15 @@
             <column name="id" type="numeric"/>
             <column name="player_one_name" type="string"/>
             <column name="player_one_score" type="numeric"/>
+            <column name="player_one_odd" type="numeric"/>
             <column name="player_two_name" type="string"/>
             <column name="player_two_score" type="numeric"/>
-            <column name="predication" type="string"/>
+            <column name="player_two_odd" type="numeric"/>
+            <column name="prediction" type="string"/>
+            <column name="actual_result" type="string"/>
+            <column name="bet_amount" type="numeric"/>
+            <column name="potential_gain" type="numeric"/>
+            <column name="gain" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

@@ -22,6 +22,10 @@
         <dd>
           <span>{{ match.playerOneScore }}</span>
         </dd>
+        <dt><span jhiTranslate="tennisApp.match.playerOneOdd">Player One Odd</span></dt>
+        <dd>
+          <span>{{ match.playerOneOdd }}</span>
+        </dd>
         <dt><span jhiTranslate="tennisApp.match.playerTwoName">Player Two Name</span></dt>
         <dd>
           <span>{{ match.playerTwoName }}</span>
@@ -30,16 +34,29 @@
         <dd>
           <span>{{ match.playerTwoScore }}</span>
         </dd>
-        <dt><span jhiTranslate="tennisApp.match.predication">Predication</span></dt>
+        <dt><span jhiTranslate="tennisApp.match.playerTwoOdd">Player Two Odd</span></dt>
         <dd>
-          <span>{{ match.predication }}</span>
+          <span>{{ match.playerTwoOdd }}</span>
         </dd>
-        <dt><span jhiTranslate="tennisApp.match.player">Player</span></dt>
+        <dt><span jhiTranslate="tennisApp.match.prediction">Prediction</span></dt>
         <dd>
-          <span *ngFor="let player of match.players; let last = last">
-            <a [routerLink]="['/player', player?.id, 'view']">{{ player.lastname }}</a
-            >{{ last ? '' : ', ' }}
-          </span>
+          <span jhiTranslate="{{ 'tennisApp.Resultat.' + match.prediction }}">{{ match.prediction }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.actualResult">Actual Result</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tennisApp.Resultat.' + match.actualResult }}">{{ match.actualResult }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.betAmount">Bet Amount</span></dt>
+        <dd>
+          <span>{{ match.betAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.potentialGain">Potential Gain</span></dt>
+        <dd>
+          <span>{{ match.potentialGain }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.gain">Gain</span></dt>
+        <dd>
+          <span>{{ match.gain }}</span>
         </dd>
       </dl>
 

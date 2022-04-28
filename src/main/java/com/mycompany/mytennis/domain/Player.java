@@ -1,9 +1,6 @@
 package com.mycompany.mytennis.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -52,11 +49,6 @@ public class Player implements Serializable {
 
     @Column(name = "score")
     private Double score;
-
-    @ManyToMany(mappedBy = "players")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "players" }, allowSetters = true)
-    private Set<Match> matches = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -201,37 +193,6 @@ public class Player implements Serializable {
 
     public void setScore(Double score) {
         this.score = score;
-    }
-
-    public Set<Match> getMatches() {
-        return this.matches;
-    }
-
-    public void setMatches(Set<Match> matches) {
-        if (this.matches != null) {
-            this.matches.forEach(i -> i.removePlayer(this));
-        }
-        if (matches != null) {
-            matches.forEach(i -> i.addPlayer(this));
-        }
-        this.matches = matches;
-    }
-
-    public Player matches(Set<Match> matches) {
-        this.setMatches(matches);
-        return this;
-    }
-
-    public Player addMatch(Match match) {
-        this.matches.add(match);
-        match.getPlayers().add(this);
-        return this;
-    }
-
-    public Player removeMatch(Match match) {
-        this.matches.remove(match);
-        match.getPlayers().remove(this);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

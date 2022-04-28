@@ -39,15 +39,31 @@
           <th scope="col" jhiSortBy="playerOneScore">
             <span jhiTranslate="tennisApp.match.playerOneScore">Player One Score</span> <fa-icon icon="sort"></fa-icon>
           </th>
+          <th scope="col" jhiSortBy="playerOneOdd">
+            <span jhiTranslate="tennisApp.match.playerOneOdd">Player One Odd</span> <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col" jhiSortBy="playerTwoName">
             <span jhiTranslate="tennisApp.match.playerTwoName">Player Two Name</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" jhiSortBy="playerTwoScore">
             <span jhiTranslate="tennisApp.match.playerTwoScore">Player Two Score</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="predication">
-            <span jhiTranslate="tennisApp.match.predication">Predication</span> <fa-icon icon="sort"></fa-icon>
+          <th scope="col" jhiSortBy="playerTwoOdd">
+            <span jhiTranslate="tennisApp.match.playerTwoOdd">Player Two Odd</span> <fa-icon icon="sort"></fa-icon>
           </th>
+          <th scope="col" jhiSortBy="prediction">
+            <span jhiTranslate="tennisApp.match.prediction">Prediction</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="actualResult">
+            <span jhiTranslate="tennisApp.match.actualResult">Actual Result</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="betAmount">
+            <span jhiTranslate="tennisApp.match.betAmount">Bet Amount</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="potentialGain">
+            <span jhiTranslate="tennisApp.match.potentialGain">Potential Gain</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gain"><span jhiTranslate="tennisApp.match.gain">Gain</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -58,9 +74,15 @@
           </td>
           <td>{{ match.playerOneName }}</td>
           <td>{{ match.playerOneScore }}</td>
+          <td>{{ match.playerOneOdd }}</td>
           <td>{{ match.playerTwoName }}</td>
           <td>{{ match.playerTwoScore }}</td>
-          <td>{{ match.predication }}</td>
+          <td>{{ match.playerTwoOdd }}</td>
+          <td jhiTranslate="{{ 'tennisApp.Resultat.' + match.prediction }}">{{ match.prediction }}</td>
+          <td jhiTranslate="{{ 'tennisApp.Resultat.' + match.actualResult }}">{{ match.actualResult }}</td>
+          <td>{{ match.betAmount }}</td>
+          <td>{{ match.potentialGain }}</td>
+          <td>{{ match.gain }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/match', match.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

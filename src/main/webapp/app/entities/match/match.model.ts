@@ -1,13 +1,18 @@
-import { IPlayer } from 'app/entities/player/player.model';
+import { Resultat } from 'app/entities/enumerations/resultat.model';
 
 export interface IMatch {
   id?: number;
   playerOneName?: string | null;
   playerOneScore?: number | null;
+  playerOneOdd?: number | null;
   playerTwoName?: string | null;
   playerTwoScore?: number | null;
-  predication?: string | null;
-  players?: IPlayer[] | null;
+  playerTwoOdd?: number | null;
+  prediction?: Resultat | null;
+  actualResult?: Resultat | null;
+  betAmount?: number | null;
+  potentialGain?: number | null;
+  gain?: number | null;
 }
 
 export class Match implements IMatch {
@@ -15,10 +20,15 @@ export class Match implements IMatch {
     public id?: number,
     public playerOneName?: string | null,
     public playerOneScore?: number | null,
+    public playerOneOdd?: number | null,
     public playerTwoName?: string | null,
     public playerTwoScore?: number | null,
-    public predication?: string | null,
-    public players?: IPlayer[] | null
+    public playerTwoOdd?: number | null,
+    public prediction?: Resultat | null,
+    public actualResult?: Resultat | null,
+    public betAmount?: number | null,
+    public potentialGain?: number | null,
+    public gain?: number | null
   ) {}
 }
 

@@ -1,9 +1,7 @@
 package com.mycompany.mytennis.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mycompany.mytennis.domain.enumeration.Resultat;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -29,24 +27,34 @@ public class Match implements Serializable {
     @Column(name = "player_one_score")
     private Double playerOneScore;
 
+    @Column(name = "player_one_odd")
+    private Double playerOneOdd;
+
     @Column(name = "player_two_name")
     private String playerTwoName;
 
     @Column(name = "player_two_score")
     private Double playerTwoScore;
 
-    @Column(name = "predication")
-    private String predication;
+    @Column(name = "player_two_odd")
+    private Double playerTwoOdd;
 
-    @ManyToMany
-    @JoinTable(
-        name = "rel_jhi_match__player",
-        joinColumns = @JoinColumn(name = "jhi_match_id"),
-        inverseJoinColumns = @JoinColumn(name = "player_id")
-    )
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "matches" }, allowSetters = true)
-    private Set<Player> players = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "prediction")
+    private Resultat prediction;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "actual_result")
+    private Resultat actualResult;
+
+    @Column(name = "bet_amount")
+    private Double betAmount;
+
+    @Column(name = "potential_gain")
+    private Double potentialGain;
+
+    @Column(name = "gain")
+    private Double gain;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -89,6 +97,19 @@ public class Match implements Serializable {
         this.playerOneScore = playerOneScore;
     }
 
+    public Double getPlayerOneOdd() {
+        return this.playerOneOdd;
+    }
+
+    public Match playerOneOdd(Double playerOneOdd) {
+        this.setPlayerOneOdd(playerOneOdd);
+        return this;
+    }
+
+    public void setPlayerOneOdd(Double playerOneOdd) {
+        this.playerOneOdd = playerOneOdd;
+    }
+
     public String getPlayerTwoName() {
         return this.playerTwoName;
     }
@@ -115,42 +136,82 @@ public class Match implements Serializable {
         this.playerTwoScore = playerTwoScore;
     }
 
-    public String getPredication() {
-        return this.predication;
+    public Double getPlayerTwoOdd() {
+        return this.playerTwoOdd;
     }
 
-    public Match predication(String predication) {
-        this.setPredication(predication);
+    public Match playerTwoOdd(Double playerTwoOdd) {
+        this.setPlayerTwoOdd(playerTwoOdd);
         return this;
     }
 
-    public void setPredication(String predication) {
-        this.predication = predication;
+    public void setPlayerTwoOdd(Double playerTwoOdd) {
+        this.playerTwoOdd = playerTwoOdd;
     }
 
-    public Set<Player> getPlayers() {
-        return this.players;
+    public Resultat getPrediction() {
+        return this.prediction;
     }
 
-    public void setPlayers(Set<Player> players) {
-        this.players = players;
-    }
-
-    public Match players(Set<Player> players) {
-        this.setPlayers(players);
+    public Match prediction(Resultat prediction) {
+        this.setPrediction(prediction);
         return this;
     }
 
-    public Match addPlayer(Player player) {
-        this.players.add(player);
-        player.getMatches().add(this);
+    public void setPrediction(Resultat prediction) {
+        this.prediction = prediction;
+    }
+
+    public Resultat getActualResult() {
+        return this.actualResult;
+    }
+
+    public Match actualResult(Resultat actualResult) {
+        this.setActualResult(actualResult);
         return this;
     }
 
-    public Match removePlayer(Player player) {
-        this.players.remove(player);
-        player.getMatches().remove(this);
+    public void setActualResult(Resultat actualResult) {
+        this.actualResult = actualResult;
+    }
+
+    public Double getBetAmount() {
+        return this.betAmount;
+    }
+
+    public Match betAmount(Double betAmount) {
+        this.setBetAmount(betAmount);
         return this;
+    }
+
+    public void setBetAmount(Double betAmount) {
+        this.betAmount = betAmount;
+    }
+
+    public Double getPotentialGain() {
+        return this.potentialGain;
+    }
+
+    public Match potentialGain(Double potentialGain) {
+        this.setPotentialGain(potentialGain);
+        return this;
+    }
+
+    public void setPotentialGain(Double potentialGain) {
+        this.potentialGain = potentialGain;
+    }
+
+    public Double getGain() {
+        return this.gain;
+    }
+
+    public Match gain(Double gain) {
+        this.setGain(gain);
+        return this;
+    }
+
+    public void setGain(Double gain) {
+        this.gain = gain;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -179,9 +240,15 @@ public class Match implements Serializable {
             "id=" + getId() +
             ", playerOneName='" + getPlayerOneName() + "'" +
             ", playerOneScore=" + getPlayerOneScore() +
+            ", playerOneOdd=" + getPlayerOneOdd() +
             ", playerTwoName='" + getPlayerTwoName() + "'" +
             ", playerTwoScore=" + getPlayerTwoScore() +
-            ", predication='" + getPredication() + "'" +
+            ", playerTwoOdd=" + getPlayerTwoOdd() +
+            ", prediction='" + getPrediction() + "'" +
+            ", actualResult='" + getActualResult() + "'" +
+            ", betAmount=" + getBetAmount() +
+            ", potentialGain=" + getPotentialGain() +
+            ", gain=" + getGain() +
             "}";
     }
 }

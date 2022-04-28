@@ -9,6 +9,7 @@
         "main": "Entities",
         "player": "Player",
         "match": "Match",
+        "bet": "Bet",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,11 +1,11 @@
-id;player_one_name;player_one_score;player_two_name;player_two_score;predication
-1;Books salmon;26620;Intelligent;51091;Interface Stand-alone Viaduct
-2;PCI Functionality Liaison;21461;Tuna Vista Awesome;33432;Strategist
-3;morph;58104;Principal;63110;withdrawal blue
-4;architectures;84297;virtual yellow;59752;Supervisor solution
-5;Ergonomic connecting motivating;82130;Berkshire Plastic;81164;Rupiah Plastic Solutions
-6;e-business Bedfordshire transmit;94104;hack;20114;white withdrawal PCI
-7;tan;96807;transmitter mission-critical SAS;16306;Metrics
-8;Intranet Group intranet;69385;redundant;34705;Avon
-9;Tuna Architect;88605;e-markets Taiwan indexing;18691;Shoes
-10;violet firewall;87597;Assurance;71861;withdrawal deposit
+id;player_one_name;player_one_score;player_one_odd;player_two_name;player_two_score;player_two_odd;prediction;actual_result;bet_amount;potential_gain;gain
+1;Books salmon;26620;455;Towels;75060;32650;ONESETWO;GAMEHIGHTWO;23206;82576;33119
+2;Accountability PCI;93809;26939;Liaison lavender deposit;96240;68947;PLAYERONE;GAMELOWONE;98566;33432;12060
+3;Analyst morph Alabama;99475;79784;expedite Electronics;64194;4511;ONESETWO;GAMELOWONE;16314;84297;51026
+4;turn-key Rubber;64125;98637;SQL;21063;75499;PLAYERONE;PLAYERONE;4624;82273;52568
+5;motivating connecting cross-platform;34980;89573;Developer bypassing task-force;78876;72223;ONESETWO;GAMEHIGHONE;64358;49537;24199
+6;transmit Response Shirt;70633;18534;calculate;58989;86497;ONESETONE;GAMELOWTWO;24105;20345;48989
+7;Facilitator mobile;61263;45359;bluetooth Automotive Tasty;56975;94895;GAMEHIGHTWO;ONESETWO;82919;32638;54086
+8;Pound channels;21139;51800;sexy;63733;78143;GAMEHIGHTWO;ONESETWO;23969;88605;95437
+9;Loan COM;44667;61966;capacity;47461;38358;PLAYERTWO;ONESETWO;35475;72284;51001
+10;GB;71198;91325;payment alarm Locks;29398;47557;ONESETWO;GAMEHIGHTWO;85579;56563;17973

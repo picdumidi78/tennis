@@ -1,5 +1,3 @@
-import { IMatch } from 'app/entities/match/match.model';
-
 export interface IPlayer {
   id?: number;
   firstname?: string | null;
@@ -12,7 +10,6 @@ export interface IPlayer {
   secondServeReturnPointsWon?: number | null;
   breakPointsConverted?: number | null;
   score?: number | null;
-  matches?: IMatch[] | null;
 }
 
 export class Player implements IPlayer {
@@ -27,8 +24,7 @@ export class Player implements IPlayer {
     public breakPointsSaved?: number | null,
     public secondServeReturnPointsWon?: number | null,
     public breakPointsConverted?: number | null,
-    public score?: number | null,
-    public matches?: IMatch[] | null
+    public score?: number | null
   ) {}
 }
 
